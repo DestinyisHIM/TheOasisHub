@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OASIS Films - Explore Movies</title>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Space+Grotesk:wght@400;500;700" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#607afb",
+              "background-light": "#f5f6f8",
+              "background-dark": "#0f1323",
+            },
+            fontFamily: {
+              display: ["Space Grotesk"],
+            },
+            borderRadius: { DEFAULT: "0.5rem", lg: "1rem", xl: "1.5rem", full: "9999px" },
+          },
+        },
+      };
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
+<div class="relative flex min-h-screen w-full flex-col">
+<header class="sticky top-0 z-10 flex items-center justify-between whitespace-nowrap border-b border-gray-200/50 dark:border-gray-700/50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm px-4 sm:px-6 lg:px-10 py-3">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-gray-900 dark:text-white">
+<div class="size-6 text-primary">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold">The OASIS Films</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="landing page.html">Home</a>
+<a class="text-sm font-medium text-primary" href="#">Movies</a>
+<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="reviews page.html">Reviews</a>
+<a class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors" href="community.html">Community</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex relative items-center">
+<span class="absolute left-3 text-gray-400 dark:text-gray-500">
+<svg fill="currentColor" height="20px" viewBox="0 0 256 256" width="20px" xmlns="http://www.w3.org/2000/svg">
+<path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+</svg>
+</span>
+<input class="form-input w-48 rounded-full border-gray-300 dark:border-gray-700 bg-gray-200/50 dark:bg-gray-800/50 focus:ring-primary focus:border-primary pl-10 text-sm" placeholder="Search"/>
+</div>
+<button class="flex items-center justify-center size-10 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">
+<svg fill="currentColor" height="20px" viewBox="0 0 256 256" width="20px" xmlns="http://www.w3.org/2000/svg">
+<path d="M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z"></path>
+</svg>
+</button>
+<div class="size-10 rounded-full bg-cover bg-center" style='background-image: url("https://www.madlads.com/_next/image?url=https%3A%2F%2Fmadlads.s3.us-west-2.amazonaws.com%2Fimages%2F17.png&w=1200&q=75");'></div>
+</div>
+</header>
+<main class="flex-grow px-4 sm:px-6 lg:px-8 py-8">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 mb-8">
+<h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white tracking-tight">Explore Categories</h1>
+<div class="relative w-full lg:w-96">
+<span class="absolute inset-y-0 left-0 flex items-center pl-4 text-gray-400 dark:text-gray-500">
+<svg fill="currentColor" height="24px" viewBox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+<path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+</svg>
+</span>
+<input class="form-input w-full rounded-lg border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800/50 focus:ring-primary focus:border-primary h-12 pl-12 pr-4 text-base" placeholder="Search for movies, genres, actors..."/>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-8">
+<button class="px-4 py-2 rounded-full text-sm font-medium bg-primary text-white">All</button>
+<button class="px-4 py-2 rounded-full text-sm font-medium bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-primary/20 dark:hover:bg-primary/20">Action</button>
+<button class="px-4 py-2 rounded-full text-sm font-medium bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-primary/20 dark:hover:bg-primary/20">Comedy</button>
+<button class="px-4 py-2 rounded-full text-sm font-medium bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-primary/20 dark:hover:bg-primary/20">Drama</button>
+<button class="px-4 py-2 rounded-full text-sm font-medium bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-primary/20 dark:hover:bg-primary/20">Sci-Fi</button>
+<button class="px-4 py-2 rounded-full text-sm font-medium bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-primary/20 dark:hover:bg-primary/20">Thriller</button>
+<button class="px-4 py-2 rounded-full text-sm font-medium bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-primary/20 dark:hover:bg-primary/20">K-Drama</button>
+</div>
+<section class="mb-12">
+<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Popular This Week</h2>
+<div class="relative">
+<div class="flex space-x-6 overflow-x-auto pb-4 -mx-4 px-4">
+<div class="flex-shrink-0 w-72 group">
+<div class="w-full aspect-video bg-cover bg-center rounded-lg mb-2" style='background-image: url("https://scontent.fabb1-1.fna.fbcdn.net/v/t39.30808-6/545603497_733330186375923_5281840069247349669_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=1ULVIFzC7q8Q7kNvwFi6FUn&_nc_oc=AdmlNztX-Zdlf7m7HKUl2rzUnUwqQw8Qgm56XTMgzGxHcEbnKhNCl3YoaVwFV12EUQ4&_nc_zt=23&_nc_ht=scontent.fabb1-1.fna&_nc_gid=VNMlv26_sRhf4uBeBj0bPA&oh=00_AfZEd64acTQpuiSMG-KoI-NnGIQxHGEQuidGgPHqNv2g3Q&oe=68DEF95F");'></div>
+<h3 class="text-base font-bold text-gray-900 dark:text-white">Ballerina</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400">Action</p>
+</div>
+<div class="flex-shrink-0 w-72 group">
+<div class="w-full aspect-video bg-cover bg-center rounded-lg mb-2" style='background-image: url("https://i.ytimg.com/vi/uKn7dCkbgYo/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLC40yc-YA4Yzi5RM3ePjO7mv3S6kg");'></div>
+<h3 class="text-base font-bold text-gray-900 dark:text-white">Code 3</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400">Comedy</p>
+</div>
+<div class="flex-shrink-0 w-72 group">
+<div class="w-full aspect-video bg-cover bg-center rounded-lg mb-2" style='background-image: url("https://m.media-amazon.com/images/S/pv-target-images/dd5ee6db87c2ce9de38ac583e3598b54fd40b46095f41a8fb5b4b467e951cefa.png");'></div>
+<h3 class="text-base font-bold text-gray-900 dark:text-white">Sound of Metal</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400">Drama</p>
+</div>
+<div class="flex-shrink-0 w-72 group">
+<div class="w-full aspect-video bg-cover bg-center rounded-lg mb-2" style='background-image: url("https://imageio.forbes.com/blogs-images/scottmendelson/files/2017/09/tumblr_static_26osk19e9qck84sgcwogsw88w-1200x675.jpg?height=399&width=711&fit=bounds");'></div>
+<h3 class="text-base font-bold text-gray-900 dark:text-white">Blade Runner</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400">Sci-Fi</p>
+</div>
+</div>
+</div>
+</section>
+<section>
+<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">New Releases</h2>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-x-6 gap-y-8">
+<div class="group">
+<div class="w-full bg-cover bg-center rounded-lg aspect-[2/3] mb-2 overflow-hidden" style='background-image: url("https://substackcdn.com/image/fetch/$s_!sFHy!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1832a42c-fcb9-43fc-bb0f-7ec9e8119d73_1080x1350.jpeg");'></div>
+<h3 class="text-base font-bold text-gray-900 dark:text-white">Caught Stealing</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400">Drama, Thriller</p>
+</div>
+<div class="group">
+<div class="w-full bg-cover bg-center rounded-lg aspect-[2/3] mb-2" style='background-image: url("https://resizing.flixster.com/4nTL6VsOuJqiqsFnzuPgt3tTN_M=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzg5NzFiNzA1LWVmYmEtNDNlZi04MzZjLWUyMTJhNjQ1N2NjYi5qcGc=");'></div>
+<h3 class="text-base font-bold text-gray-900 dark:text-white">Naked Gun</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400">Romance</p>
+</div>
+<div class="group">
+<div class="w-full bg-cover bg-center rounded-lg aspect-[2/3] mb-2" style='background-image: url("https://m.media-amazon.com/images/M/MV5BYmQ4NWVjN2EtN2U3NC00YzZhLWIzYmMtNjQ0ZjNiN2MzNDI0XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg");'></div>
+<h3 class="text-base font-bold text-gray-900 dark:text-white">The Thursday Murder Club</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400">Thriller</p>
+</div>
+<div class="group">
+<div class="w-full bg-cover bg-center rounded-lg aspect-[2/3] mb-2" style='background-image: url("https://dx35vtwkllhj9.cloudfront.net/searchlightpictures/the-roses/images/regions/ca/onesheet.jpg");'></div>
+<h3 class="text-base font-bold text-gray-900 dark:text-white">The Roses</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400">Drama, Comedy</p>
+</div>
+<div class="group">
+<div class="w-full bg-cover bg-center rounded-lg aspect-[2/3] mb-2" style='background-image: url("https://www.universalpictures.co.uk/tl_files/content/movies/bad_guys_2/posters/01.jpg");'></div>
+<h3 class="text-base font-bold text-gray-900 dark:text-white">Bad Guys 2</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400">Animation, Action</p>
+</div>
+<div class="group">
+<div class="w-full bg-cover bg-center rounded-lg aspect-[2/3] mb-2" style='background-image: url("https://m.media-amazon.com/images/M/MV5BNzA1OWU4NDMtMDUxMC00NWI4LWJhYjUtYWQ0OGQ5MTc2NDRjXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg");'></div>
+<h3 class="text-base font-bold text-gray-900 dark:text-white">Black Bag</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400">Spy, Thriller</p>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+
+</body></html>

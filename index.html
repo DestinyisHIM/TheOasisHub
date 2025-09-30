@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>The OASIS Films</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#607AFB",
+                        "background-dark": "#0f1323",
+                    },
+                    fontFamily: {
+                        display: "Space Grotesk",
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        lg: "1rem",
+                        xl: "1.5rem",
+                    },
+                    keyframes: {
+                        scroll: {
+                            "0%": { transform: "translateX(0)" },
+                            "50%": { transform: "translateX(-50%)" },
+                        },
+                    },
+                    animation: {
+                        scroll: "scroll 40s linear infinite",
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+<body class="bg-background-dark font-display text-white overflow-x-hidden">
+    <div class="min-h-screen w-full">
+        <!-- Hero Section with Image Carousel -->
+        <section class="relative h-screen w-full overflow-hidden">
+            <!-- Image Carousel -->
+            <div class="absolute inset-0 w-full h-full">
+                <div class="flex animate-scroll motion-safe:animate-scroll h-full">
+                    <!-- First Set -->
+                    <img alt="Movie Poster" class="h-full flex-shrink-0 w-1/3 sm:w-1/4 md:w-1/5 object-cover" src="https://m.media-amazon.com/images/M/MV5BOTFmZmExYTEtYmE0Mi00MzRmLWE4ZDYtOThiNzNlOTIyODljXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"/>
+                    <img alt="Movie Poster" class="h-full flex-shrink-0 w-1/3 sm:w-1/4 md:w-1/5 object-cover" src="https://static.wikia.nocookie.net/severance-series/images/c/c8/S2KeyArt3.png/revision/latest?cb=20250109230001"/>
+                    <img alt="Movie Poster" class="h-full flex-shrink-0 w-1/3 sm:w-1/4 md:w-1/5 object-cover" src="https://m.media-amazon.com/images/M/MV5BNTEwNTFkZTktMzI1OC00YmRjLWE5NTUtYmZhMmJlNGUxMWU1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"/>
+                    <img alt="Movie Poster" class="h-full flex-shrink-0 w-1/3 sm:w-1/4 md:w-1/5 object-cover" src="https://m.media-amazon.com/images/M/MV5BMzU5ZGYzNmQtMTdhYy00OGRiLTg0NmQtYjVjNzliZTg1ZGE4XkEyXkFqcGc@._V1_.jpg"/>
+                    <img alt="Movie Poster" class="h-full flex-shrink-0 w-1/3 sm:w-1/4 md:w-1/5 object-cover" src="https://m.media-amazon.com/images/M/MV5BMjRmMTNiMTQtMDg1ZS00MGM1LWE1MGUtYjEzMGFjNWUzOWRkXkEyXkFqcGc@._V1_.jpg"/>
+                    <img alt="Movie Poster" class="h-full flex-shrink-0 w-1/3 sm:w-1/4 md:w-1/5 object-cover" src="https://resizing.flixster.com/1t3h8KAxIMmKUCU09OoqpfqD6R0=/ems.cHJkLWVtcy1hc3NldHMvdHZzZWFzb24vZjU3YTRlYjItOTAzNC00MzFjLTg0NGQtODA1ZGU2OWY1NzY1LmpwZw=="/>
+                    <img alt="Movie Poster" class="h-full flex-shrink-0 w-1/3 sm:w-1/4 md:w-1/5 object-cover" src="https://m.media-amazon.com/images/M/MV5BNjA5ODM4YTEtNDcxZi00N2ViLTg0MTgtNGQxNjBjZWY5YTk3XkEyXkFqcGc@._V1_.jpg"/>
+                    <img alt="Movie Poster" class="h-full flex-shrink-0 w-1/3 sm:w-1/4 md:w-1/5 object-cover" src="https://static.wikia.nocookie.net/witcher_gamepedia/images/c/c1/The_Witcher_%28Netflix%29.jpeg/revision/latest/scale-to-width-down/1200?cb=20191120184402"/>
+                    
+                    <!-- Duplicate Set for Seamless Loop -->
+                    <img alt="Movie Poster" class="h-full flex-shrink-0 w-1/3 sm:w-1/4 md:w-1/5 object-cover" src="https://m.media-amazon.com/images/M/MV5BNTQzNGZjNDEtOTMwYi00MzFjLWE2ZTYtYzYxYzMwMjZkZDc5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"/>
+                    <img alt="Movie Poster" class="h-full flex-shrink-0 w-1/3 sm:w-1/4 md:w-1/5 object-cover" src="https://static.wikia.nocookie.net/severance-series/images/c/c8/S2KeyArt3.png/revision/latest?cb=20250109230001"/>
+                    <img alt="Movie Poster" class="h-full flex-shrink-0 w-1/3 sm:w-1/4 md:w-1/5 object-cover" src="https://m.media-amazon.com/images/M/MV5BNTEwNTFkZTktMzI1OC00YmRjLWE5NTUtYmZhMmJlNGUxMWU1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"/>
+                    <img alt="Movie Poster" class="h-full flex-shrink-0 w-1/3 sm:w-1/4 md:w-1/5 object-cover" src="https://m.media-amazon.com/images/M/MV5BMzU5ZGYzNmQtMTdhYy00OGRiLTg0NmQtYjVjNzliZTg1ZGE4XkEyXkFqcGc@._V1_.jpg"/>
+                    <img alt="Movie Poster" class="h-full flex-shrink-0 w-1/3 sm:w-1/4 md:w-1/5 object-cover" src="https://m.media-amazon.com/images/M/MV5BMjRmMTNiMTQtMDg1ZS00MGM1LWE1MGUtYjEzMGFjNWUzOWRkXkEyXkFqcGc@._V1_.jpg"/>
+                    <img alt="Movie Poster" class="h-full flex-shrink-0 w-1/3 sm:w-1/4 md:w-1/5 object-cover" src="https://images.unsplash.com/photo-1489599511405-65eae7d0f65d?w=400&h=600&fit=crop"/>
+                    <img alt="Movie Poster" class="h-full flex-shrink-0 w-1/3 sm:w-1/4 md:w-1/5 object-cover" src="https://images.unsplash.com/photo-1616530940355-351fabd9524b?w=400&h=600&fit=crop"/>
+                    <img alt="Movie Poster" class="h-full flex-shrink-0 w-1/3 sm:w-1/4 md:w-1/5 object-cover" src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?w=400&h=600&fit=crop"/>
+                </div>
+            </div>
+            
+            <!-- Dark Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/70 to-background-dark/20"></div>
+            
+            <!-- Content -->
+            <div class="relative flex h-full flex-col items-center justify-center gap-6 p-6 text-center">
+                <!-- Logo -->
+                <div class="flex items-center gap-3 mb-4">
+                    <svg class="h-8 w-8 text-primary" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path clip-rule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill="currentColor" fill-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-xl font-bold text-white">The OASIS Films</span>
+                </div>
+                
+                <!-- Main Heading -->
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
+                    Explore the World of Cinema
+                </h1>
+                
+                <!-- Subtitle -->
+                <p class="max-w-md text-base sm:text-lg text-white/90 leading-relaxed">
+                    Discover, review, and discuss your favorite films with a community of movie enthusiasts.
+                </p>
+                
+                <!-- CTA Button -->
+                <button 
+                    onclick="window.location.href='landing page.html'" 
+                    class="mt-6 h-12 px-8 rounded-xl bg-primary text-base font-bold text-black/90 transition-all duration-300 hover:scale-105 hover:bg-primary/90 shadow-lg"
+                >
+                    Start Exploring
+                </button>
+                
+                <!-- Skip Option -->
+                <button 
+                    onclick="window.location.href='main-page.html'" 
+                    class="mt-4 text-sm text-white/70 hover:text-white transition-colors underline"
+                >
+                    Skip intro
+                </button>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

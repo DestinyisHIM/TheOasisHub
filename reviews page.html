@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OASIS Commuinty Reviews</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#607afb",
+              "background-light": "#f5f6f8",
+              "background-dark": "#0f1323",
+            },
+            fontFamily: {
+              display: ["Newsreader"],
+            },
+            borderRadius: { DEFAULT: "0.5rem", lg: "1rem", xl: "1.5rem", full: "9999px" },
+          },
+        },
+      };
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-800 dark:text-slate-200">
+<div class="flex min-h-screen w-full flex-col">
+<header class="sticky top-0 z-10 border-b border-slate-200/80 bg-background-light/80 backdrop-blur-lg dark:border-slate-800/80 dark:bg-background-dark/80">
+<div class="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-2 text-xl font-bold text-slate-900 dark:text-white" href="#">
+<span class="material-symbols-outlined text-primary text-3xl"> movie </span>
+              The OASIS Films
+            </a>
+<nav class="hidden items-center gap-6 md:flex">
+<a class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-primary" href="landing page.html">Home</a>
+<a class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-primary" href="movies category.html">Movies</a>
+<a class="text-sm font-medium text-primary dark:text-primary" href="#">Reviews</a>
+<a class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-primary" href="community.html">Community</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:block">
+<div class="relative">
+<span class="material-symbols-outlined pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"> search </span>
+<input class="h-10 w-full max-w-xs rounded-full border-slate-300 bg-slate-100 pl-10 pr-4 text-sm focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white" placeholder="Search" type="text"/>
+</div>
+</div>
+<button class="relative rounded-full p-2 text-slate-500 hover:bg-slate-200 hover:text-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-200">
+<span class="material-symbols-outlined"> notifications </span>
+</button>
+<button>
+<div class="h-10 w-10 rounded-full bg-cover bg-center" style='background-image: url("https://www.madlads.com/_next/image?url=https%3A%2F%2Fmadlads.s3.us-west-2.amazonaws.com%2Fimages%2F17.png&w=1200&q=75");'></div>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-grow">
+<div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+<div class="mx-auto max-w-4xl">
+<div class="mb-8 text-center">
+<h1 class="text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl">Highlighted Reviews</h1>
+<p class="mt-4 text-lg text-slate-600 dark:text-slate-400">Explore reviews from our community or share your own thoughts on your favorite films.</p>
+</div>
+<div class="mb-6 border-b border-slate-200 dark:border-slate-800">
+<div class="-mb-px flex space-x-8 px-1">
+<a class="whitespace-nowrap border-b-2 border-primary px-1 py-4 text-sm font-medium text-primary" href="#">All Reviews</a>
+<a class="whitespace-nowrap border-b-2 border-transparent px-1 py-4 text-sm font-medium text-slate-500 hover:border-slate-300 hover:text-slate-700 dark:text-slate-400 dark:hover:border-slate-700 dark:hover:text-slate-300" href="#">Write a Review</a>
+</div>
+</div>
+<div class="mb-8">
+<div class="relative">
+<span class="material-symbols-outlined pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"> search </span>
+<input class="h-12 w-full rounded-lg border-slate-300 bg-white pl-12 pr-4 text-base focus:border-primary focus:ring-primary dark:border-slate-700 dark:bg-slate-900 dark:text-white" placeholder="Search reviews by movie title or user..." type="text"/>
+</div>
+</div>
+<div>
+<h2 class="mb-6 text-2xl font-bold text-slate-900 dark:text-white">Featured Reviews</h2>
+<div class="grid gap-8 md:grid-cols-2">
+<div class="flex flex-col gap-4 rounded-xl border border-slate-200 bg-white p-4 transition-shadow hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:shadow-primary/10">
+<div class="flex-1">
+<div class="h-40 w-full rounded-lg bg-cover bg-center" style='background-image: url("https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/0b9b3cb5-d146-4e96-a1ef-3cc57427ae86/compose?aspectRatio=1.78&format=webp&width=1200");'></div>
+<p class="mt-4 text-sm text-slate-500 dark:text-slate-400">Thuderbolt*</p>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">It Deserves more recognition</h3>
+<p class="mt-1 text-sm text-slate-500 dark:text-slate-400">Review by DestinyisHIM</p>
+</div>
+<a class="mt-4 inline-block self-start rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary hover:bg-primary/20 dark:bg-primary/20 dark:hover:bg-primary/30" href="#">Read Review</a>
+</div>
+<div class="flex flex-col gap-4 rounded-xl border border-slate-200 bg-white p-4 transition-shadow hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:shadow-primary/10">
+<div class="flex-1">
+<div class="h-40 w-full rounded-lg bg-cover bg-center" style='background-image: url("https://thefutureoftheforce.com/wp-content/uploads/2025/08/Nobody-2-Review-2025-Header-FUTURE-OF-THE-FORCE.jpg");'></div>
+<p class="mt-4 text-sm text-slate-500 dark:text-slate-400">Nobody 2</p>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">A Comedy Action Romance that complients the First</h3>
+<p class="mt-1 text-sm text-slate-500 dark:text-slate-400">Review by Shadow</p>
+</div>
+<a class="mt-4 inline-block self-start rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary hover:bg-primary/20 dark:bg-primary/20 dark:hover:bg-primary/30" href="#">Read Review</a>
+</div>
+</div>
+<h2 class="mb-6 mt-12 text-2xl font-bold text-slate-900 dark:text-white">Latest Reviews</h2>
+<div class="space-y-8">
+<div class="rounded-xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
+<div class="flex items-center gap-4">
+<div class="h-10 w-10 flex-shrink-0 rounded-full bg-cover bg-center" style='background-image: url("https://pbs.twimg.com/media/FtE_csjWAAAOqFx?format=jpg&name=4096x4096");'></div>
+<div>
+<p class="font-semibold text-slate-800 dark:text-slate-200">Ifunaya Judith</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">2 days ago</p>
+</div>
+</div>
+<div class="my-4 flex items-center">
+<span class="material-symbols-outlined !text-xl text-primary">star</span>
+<span class="material-symbols-outlined !text-xl text-primary">star</span>
+<span class="material-symbols-outlined !text-xl text-primary">star</span>
+<span class="material-symbols-outlined !text-xl text-primary">star</span>
+<span class="material-symbols-outlined !text-xl text-slate-300 dark:text-slate-600">star</span>
+</div>
+<p class="text-slate-600 dark:text-slate-300">A gripping thriller with unexpected twists. The Enigma keeps you on the edge of your seat until the very end.</p>
+<div class="mt-4 flex items-center gap-6 text-sm text-slate-500 dark:text-slate-400">
+<button class="flex items-center gap-1.5 hover:text-primary"><span class="material-symbols-outlined !text-xl">thumb_up</span> 12</button>
+<button class="flex items-center gap-1.5 hover:text-primary"><span class="material-symbols-outlined !text-xl">thumb_down</span> 2</button>
+</div>
+</div>
+<div class="rounded-xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
+<div class="flex items-center gap-4">
+<div class="h-10 w-10 flex-shrink-0 rounded-full bg-cover bg-center" style='background-image: url("https://s3.amazonaws.com/cdn.nftpricefloor/projects/v1/mad-lads.png?version=6");'></div>
+<div>
+<p class="font-semibold text-slate-800 dark:text-slate-200">ChapTech</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">3 days ago</p>
+</div>
+</div>
+<div class="my-4 flex items-center">
+<span class="material-symbols-outlined !text-xl text-primary">star</span>
+<span class="material-symbols-outlined !text-xl text-primary">star</span>
+<span class="material-symbols-outlined !text-xl text-primary">star</span>
+<span class="material-symbols-outlined !text-xl text-primary">star</span>
+<span class="material-symbols-outlined !text-xl text-primary">star</span>
+</div>
+<p class="text-slate-600 dark:text-slate-300">Echoes of Yesterday is a beautifully crafted film that explores the complexities of time and memory. A must-watch!</p>
+<div class="mt-4 flex items-center gap-6 text-sm text-slate-500 dark:text-slate-400">
+<button class="flex items-center gap-1.5 hover:text-primary"><span class="material-symbols-outlined !text-xl">thumb_up</span> 25</button>
+<button class="flex items-center gap-1.5 hover:text-primary"><span class="material-symbols-outlined !text-xl">thumb_down</span> 1</button>
+</div>
+</div>
+<div class="rounded-xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
+<div class="flex items-center gap-4">
+<div class="h-10 w-10 flex-shrink-0 rounded-full bg-cover bg-center" style='background-image: url("https://pbs.twimg.com/media/FtCRWMnaUAYOQCf?format=jpg&name=4096x4096");'></div>
+<div>
+<p class="font-semibold text-slate-800 dark:text-slate-200">May Frost</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">5 days ago</p>
+</div>
+</div>
+<div class="my-4 flex items-center">
+<span class="material-symbols-outlined !text-xl text-primary">star</span>
+<span class="material-symbols-outlined !text-xl text-primary">star</span>
+<span class="material-symbols-outlined !text-xl text-primary">star</span>
+<span class="material-symbols-outlined !text-xl text-slate-300 dark:text-slate-600">star</span>
+<span class="material-symbols-outlined !text-xl text-slate-300 dark:text-slate-600">star</span>
+</div>
+<p class="text-slate-600 dark:text-slate-300">While visually stunning, The Lost Horizon lacked a compelling narrative. The characters were underdeveloped, and the plot felt disjointed.</p>
+<div class="mt-4 flex items-center gap-6 text-sm text-slate-500 dark:text-slate-400">
+<button class="flex items-center gap-1.5 hover:text-primary"><span class="material-symbols-outlined !text-xl">thumb_up</span> 8</button>
+<button class="flex items-center gap-1.5 hover:text-primary"><span class="material-symbols-outlined !text-xl">thumb_down</span> 5</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

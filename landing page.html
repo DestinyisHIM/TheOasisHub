@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>The OASIS Flims</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=container-queries"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#607AFB",
+              "background-light": "#f5f6f8",
+              "background-dark": "#0f1323"
+            },
+            fontFamily: {
+              display: "Space Grotesk"
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+              lg: "1rem",
+              xl: "1.5rem",
+              full: "9999px"
+            },
+            // Removed 'infinite-scroll' keyframes and animation since we are using manual control
+          }
+        }
+      };
+    </script>
+    <style>
+      /* Hides the scrollbar for a cleaner carousel look */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .carousel-image {
+        opacity: 0;
+        visibility: hidden;
+      }
+      .carousel-image.active {
+        opacity: 1;
+        visibility: visible;
+      }
+    </style>
+  </head>
+  <body class="bg-background-light dark:bg-background-dark font-display text-white/90">
+    <div class="flex min-h-screen w-full flex-col">
+      <header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-white/10 bg-background-light/80 px-4 py-3 backdrop-blur-sm dark:bg-background-dark/80 sm:px-6 lg:px-10">
+        <div class="flex items-center gap-6 lg:gap-8">
+          <a class="flex items-center gap-3 text-lg font-bold" href="#">
+            <svg class="h-6 w-6 text-primary" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+              <path clip-rule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill="currentColor" fill-rule="evenodd"></path>
+            </svg>
+            <span class="text-black dark:text-white">The OASIS Flims</span>
+          </a>
+          <nav class="hidden items-center gap-6 md:flex lg:gap-8">
+            <a class="text-sm font-medium text-black/60 transition-colors hover:text-primary dark:text-white/60 dark:hover:text-primary" href="coming soon.html">Coming Soon</a>
+            <a class="text-sm font-medium text-black/60 transition-colors hover:text-primary dark:text-white/60 dark:hover:text-primary" href="movies category.html">Movies</a>
+            <a class="text-sm font-medium text-black/60 transition-colors hover:text-primary dark:text-white/60 dark:hover:text-primary" href="reviews page.html">Reviews</a>
+            <a class="text-sm font-medium text-black/60 transition-colors hover:text-primary dark:text-white/60 dark:hover:text-primary" href="profile page.html">Profile</a>
+          </nav>
+        </div>
+        <div class="flex items-center gap-3 lg:gap-4">
+          <div class="relative hidden sm:block">
+            <svg class="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-black/50 dark:text-white/50" fill="currentColor" height="24" viewbox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+            </svg>
+            <input class="h-10 w-full rounded-full bg-black/10 pl-10 pr-4 text-sm text-black placeholder:text-black/50 focus:outline-none focus:ring-2 focus:ring-primary/50 dark:bg-white/10 dark:text-white dark:placeholder:text-white/50 sm:w-48 lg:w-64" placeholder="Search movies..." type="search" />
+          </div>
+          <button class="flex h-10 w-10 items-center justify-center rounded-full bg-black/10 text-black/60 transition-colors hover:bg-primary/20 hover:text-primary dark:bg-white/10 dark:text-white/60 dark:hover:bg-primary/20">
+            <svg fill="currentColor" height="20" viewbox="0 0 256 256" width="20" xmlns="http://www.w3.org/2000/svg">
+              <path d="M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z"></path>
+            </svg>
+          </button>
+          <img alt="User avatar" class="h-10 w-10 rounded-full" src="https://ik.imagekit.io/blockster/7fbb45ea-38ae-472c-8223-8b74301108a2.jpg?tr=w-300" />
+        </div>
+      </header>
+      <main class="flex-1">
+        <section class="relative h-[60vh] min-h-[400px] w-full overflow-hidden @container md:h-[80vh] lg:h-screen">
+          <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out carousel-image active" style='background-image: url("https://m.media-amazon.com/images/S/pv-target-images/189420c3dbf235953dbb719a513f845fe8422135b1008eadc67b8356ee4d2751.jpg");'></div>
+          <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out carousel-image" style='background-image: url("https://mediocrebatman.wordpress.com/wp-content/uploads/2017/05/breaking-bad.jpg");'></div>
+          <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out carousel-image" style='background-image: url("https://cdn-m-net.dstv.com/images/WidgetBilboard/2022/06/29/932253/16/1656492716-34_Snowfall_S5_ME_Mobile_Billboard_1600_x_800_Opt_2.jpg");'></div>
+          <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out carousel-image" style='background-image: url("https://images.ctfassets.net/4cd45et68cgf/5qto2ttkHTghPl3s9tsY6Z/9f311b42dac0a13ae231ff8764e2a384/LUPIN_S2_16X9_EN-US.jpg");'></div>
+          <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out carousel-image" style='background-image: url("https://film-authority.com/wp-content/uploads/2025/06/f1-movie-scene-3.jpg");'></div>
+          <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out carousel-image" style='background-image: url("https://ntvb.tmsimg.com/assets/p17567908_b_h8_af.jpg?w=1280&h=720");'></div>
+          <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out carousel-image" style='background-image: url("https://4kwallpapers.com/images/walls/thumbs_3t/17287.jpg");'></div>
+          <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out carousel-image" style='background-image: url("https://images5.alphacoders.com/825/825935.jpg");'></div>
+          <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out carousel-image" style='background-image: url("https://cdn.wallpapersafari.com/47/21/P6cKJe.jpg");'></div>
+          <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out carousel-image" style='background-image: url("https://wallpapercat.com/w/full/c/c/f/47840-3840x2160-desktop-4k-the-matrix-resurrections-wallpaper.jpg");'></div>
+          <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out carousel-image" style='background-image: url("https://thumbor.prod.vidiocdn.com/lV7B_O4BDIn6gBvkpqbMEDaf4AU=/1920x1080/filters:quality(70)/vidio-media-production/uploads/image/source/20626/9e00d8.jpg");'></div>
+          <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out carousel-image" style='background-image: url("https://static.skyassets.com/contentstack/assets/blt143e20b03d72047e/blt5070363e258f2bc8/5f27f1eb9263024904edb5a9/watch-chernobyl-9-hero.jpg");'></div>
+          <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out carousel-image" style='background-image: url("https://images8.alphacoders.com/139/1397454.jpg");'></div>
+          <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out carousel-image" style='background-image: url("https://preview.redd.it/made-this-dexter-pc-wallpaper-wanted-to-share-it-v0-vpphyhydmzbe1.png?auto=webp&s=8c25672d2806443ae9038287de01c27b5f5feec6");'></div>
+          <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out carousel-image" style='background-image: url("https://wallpapercat.com/w/full/a/e/b/871-3840x2160-desktop-4k-halo-wallpaper-photo.jpg");'></div>
+          <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out carousel-image" style='background-image: url("https://wallpapers.com/images/featured/bridgerton-pictures-lh7t67sqh4t7gt1n.jpg");'></div>
+          <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out carousel-image" style='background-image: url("https://wallpapers.com/images/featured/money-heist-segtwbhffwy01w82.jpg");'></div>
+          <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out carousel-image" style='background-image: url("https://thumbnails.cbsig.net/_x/w1200/CBS_Production_Entertainment_VMS/2022/03/12/2012220483960/HTLAG_SAlone_16_9_1920x1080_NB_1296229_1920x1080.jpg");'></div>
+          <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out carousel-image" style='background-image: url("https://i.redd.it/kgcheawgo5vd1.png");'></div>
+          <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out carousel-image" style='background-image: url("https://images2.alphacoders.com/845/845641.jpg");'></div>
+          <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out carousel-image" style='background-image: url("https://bbc.brightcove.services/static/1585653092-069c50d32152399ae9f0d81ca5df32e35a7695c9.jpg");'></div>
+          <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out carousel-image" style='background-image: url("https://ntvb.tmsimg.com/assets/p26830740_b_h8_ae.jpg?w=1280&h=720");'></div>
+          <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out carousel-image" style='background-image: url("https://m.media-amazon.com/images/S/pv-target-images/a2b302df5c77305fd535e12682f87d74825dcb8c8b2c5d08b5d2e2db982ec612.jpg");'></div>
+          <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out carousel-image" style='background-image: url("https://cdn.wallpapersafari.com/51/36/zGgdmn.jpg");'></div>
+          
+          <div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 via-background-dark/40 to-transparent"></div>
+          <div class="relative flex h-full flex-col items-center justify-end gap-4 p-4 text-center @[640px]:gap-6 @[640px]:p-8 lg:items-start lg:p-16 lg:text-left">
+            <h1 class="text-4xl font-bold text-white @[640px]:text-5xl lg:text-6xl">Explore the World of Cinema</h1>
+            <p class="max-w-2xl text-base text-white/80 @[640px]:text-lg">
+              Discover, review, and discuss your favorite films with a community of movie enthusiasts.
+            </p>
+            <button class="h-12 rounded-lg bg-primary px-6 text-base font-bold text-black/90 transition-transform hover:scale-105">
+              Get Started
+            </button>
+          </div>
+        </section>
+        <div class="space-y-12 px-4 py-12 sm:px-6 lg:px-16">
+
+          <section>
+            <h2 class="mb-4 text-2xl font-bold text-black dark:text-white">Trending Movies Now</h2>
+            
+            <div class="relative group">
+
+                <button id="trending-prev" class="absolute left-0 top-1/2 z-10 hidden -translate-y-1/2 rounded-full bg-background-dark/80 p-3 text-white/80 opacity-0 shadow-lg backdrop-blur transition-opacity duration-300 hover:bg-background-dark md:block md:group-hover:opacity-100">
+                    <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+
+                <div id="trending-carousel" class="flex snap-x snap-mandatory space-x-6 overflow-x-auto overflow-y-hidden p-0 no-scrollbar scroll-smooth">
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-white/10 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="One Battle After Another" class="h-full w-full object-cover" src="https://resizing.flixster.com/yepsxuaCu3f7igZnTo2huAOVtCU=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzNhNmQzNDA0LWFhYjQtNDA5Mi04OTMyLTA2Y2U2OWI5ZjVmYS5qcGc=" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">One Battle After Another</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">A thrilling tale.</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-white/10 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Him" class="h-full w-full object-cover" src="https://dx35vtwkllhj9.cloudfront.net/universalstudios/him/images/regions/us/updates1/onesheet.jpg" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Him</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Action/Sci-Fi</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-white/10 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Fantastic Four" class="h-full w-full object-cover" src="https://lumiere-a.akamaihd.net/v1/images/au_movies_marvel_fantasticfourfirststeps_official_poste_daf083fc.jpeg?region=0%2C0%2C540%2C810" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Fantastic Four</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Action, sci-fi</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-white/10 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Superman 2025" class="h-full w-full object-cover" src="https://m.media-amazon.com/images/M/MV5BOGMwZGJiM2EtMzEwZC00YTYzLWIxNzYtMmJmZWNlZjgxZTMwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Superman 2025</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Drama</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-white/10 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Tron Ares" class="h-full w-full object-cover" src="https://static.wikia.nocookie.net/jamescameronsavatar/images/c/c7/Avatar_The_Way_of_Water_Dolby_Poster.png/revision/latest/scale-to-width/360?cb=20221123044150" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Avatar The Way of Water</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">A thrilling tale.</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-white/10 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Mission Impossible Final Reckoning" class="h-full w-full object-cover" src="https://mediaproxy.tvtropes.org/width/1200/https://static.tvtropes.org/pmwiki/pub/images/mifinalreckoning.png" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Mission Impossible Final Reckoning</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Action/Sci-Fi</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-white/10 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Life of Chuck" class="h-full w-full object-cover" src="https://m.media-amazon.com/images/M/MV5BZDhlMzJhMTgtN2FhZS00OWQ1LTk3Y2ItZGNiNTQ0ZmUzYmIzXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Life of Chuck</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Comedy</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-white/10 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Together" class="h-full w-full object-cover" src="https://preview.redd.it/new-poster-for-together-v0-j4iuu8hscx5f1.jpeg?width=1080&crop=smart&auto=webp&s=a57bdc87532ddeddfcaa7ef3333ad51bf110bdf0" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Together</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Drama, Thriller, Horror</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-gray-600/50 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Placeholder 9" class="h-full w-full object-cover" src="https://m.media-amazon.com/images/M/MV5BNmM0Yzc1ZjAtZTg4My00NDI3LWEwMzAtY2ZkNzMxMWMwOTFlXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Eddington</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Mystery, Crime</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-gray-600/50 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Placeholder 10" class="h-full w-full object-cover" src="https://m.media-amazon.com/images/M/MV5BZDYxY2I1OGMtN2Y4MS00ZmU1LTgyNDAtODA0MzAyYjI0N2Y2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Avatar: Fire and Ash</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Sci-Fi, Epic</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-gray-600/50 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Placeholder 11" class="h-full w-full object-cover" src="https://m.media-amazon.com/images/M/MV5BNmQxMTI1YmEtOGY3Yi00NzVlLWEzMjAtYTI1NWZkNDFiMDg1XkEyXkFqcGc@._V1_.jpg" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Materialist</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Romance, Drama</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-gray-600/50 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Placeholder 12" class="h-full w-full object-cover" src="https://m.media-amazon.com/images/M/MV5BNTExYmRjMmMtMGRjMi00ZGIyLTkwZTAtOWExOTYwNmM4NTk3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Highest 2 Lowest</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Thriller, Crime</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="trending-next" class="absolute right-0 top-1/2 z-10 hidden -translate-y-1/2 rounded-full bg-background-dark/80 p-3 text-white/80 opacity-0 shadow-lg backdrop-blur transition-opacity duration-300 hover:bg-background-dark md:block md:group-hover:opacity-100">
+                    <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+          </section>
+
+          <section>
+            <h2 class="mb-4 text-2xl font-bold text-black dark:text-white">Updated Series</h2>
+            
+            <div class="relative group">
+
+                <button id="series-prev" class="absolute left-0 top-1/2 z-10 hidden -translate-y-1/2 rounded-full bg-background-dark/80 p-3 text-white/80 opacity-0 shadow-lg backdrop-blur transition-opacity duration-300 hover:bg-background-dark md:block md:group-hover:opacity-100">
+                    <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+
+                <div id="series-carousel" class="flex snap-x snap-mandatory space-x-6 overflow-x-auto overflow-y-hidden p-0 no-scrollbar scroll-smooth">
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-white/10 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Better Call Saul" class="h-full w-full object-cover" src="https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p10492751_b_v13_al.jpg" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Better Call Saul</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Animation, Adventure</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-white/10 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Daredevil Born Again" class="h-full w-full object-cover" src="https://static.wikia.nocookie.net/marvelcinematicuniverse/images/7/7f/Daredevil_Born_Again_Cracks_Tall_Poster.jpg/revision/latest/scale-to-width-down/1200?cb=20250416124716" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Daredevil Born Again</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Action, Adventure</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-white/10 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Peacemaker" class="h-full w-full object-cover" src="https://substackcdn.com/image/fetch/$s_!Kt_U!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe6838651-0796-4ca4-9190-c89553888d71_1296x1920.jpeg" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Peacemaker</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Mystery, Thriller</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-white/10 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Gen V" class="h-full w-full object-cover" src="https://static.wikia.nocookie.net/amazons-the-boys/images/3/32/Gen_V_Late_August_Poster.jpg/revision/latest?cb=20230825172233" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Gen V</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Comedy, Slice of Life</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-white/10 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Aliens" class="h-full w-full object-cover" src="https://datg-cms-source-repo.s3.amazonaws.com/FX/AlienEarth/AlienEarth/38199da8-bda9-429a-a829-1fa7866f0732.jpg" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Aliens</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Animation, Adventure</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-white/10 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Invasion" class="h-full w-full object-cover" src="https://m.media-amazon.com/images/M/MV5BOTU3ZTg4OTktODUyNi00N2U4LWIwYzYtNDAzZDE0MjgyOTM4XkEyXkFqcGc@._V1_.jpg" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Invasion</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Action, Adventure</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-white/10 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="RabbitHole" class="h-full w-full object-cover" src="https://www.moviemeter.nl/series/images/photo/9000/9017.jpg?cb=1698358248" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">RabbitHole</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Mystery, Thriller</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-white/10 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Eyes of Wakanda" class="h-full w-full object-cover" src="https://resizing.flixster.com/BBzknGU14NHPHeQabG5F3AdWyFg=/ems.cHJkLWVtcy1hc3NldHMvdHZzZWFzb24vMWRjNzRhY2ItMzYwZS00MjYyLWFiMWUtOTdiYzExOWMyN2U2LmpwZw==" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Eyes of Wakanda</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Comedy, Slice of Life</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-gray-600/50 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Placeholder 9" class="h-full w-full object-cover" src="https://m.media-amazon.com/images/M/MV5BZGJkMmY5MTQtODg0MC00NTgxLTgwMTctODMxNGM0NDhhM2UxXkEyXkFqcGc@._V1_.jpg" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">The Watchmen</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Crime, Thriller</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-gray-600/50 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Placeholder 10" class="h-full w-full object-cover" src="https://static.wikia.nocookie.net/czech-mayor-of-kingstown-out/images/a/a9/Shogun_Poster_1.png/revision/latest?cb=20240213170242" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">SHOGUN</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Drama, Thriller</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-gray-600/50 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Placeholder 11" class="h-full w-full object-cover" src="https://m.media-amazon.com/images/M/MV5BZjM2MDIxMTYtMDUwYy00Y2VlLTgwZWQtMTE4MzgyNzNmYmRjXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">His Dark Materials</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Adventure, Sci-Fi</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-gray-600/50 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Placeholder 12" class="h-full w-full object-cover" src="https://static.wikia.nocookie.net/marvel_dc/images/4/4f/The_Penguin_TV_Series_001.jpg/revision/latest/scale-to-width-down/1200?cb=20241026135504" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">The Penguin</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Crime, Thriller</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="series-next" class="absolute right-0 top-1/2 z-10 hidden -translate-y-1/2 rounded-full bg-background-dark/80 p-3 text-white/80 opacity-0 shadow-lg backdrop-blur transition-opacity duration-300 hover:bg-background-dark md:block md:group-hover:opacity-100">
+                    <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+          </section>
+          
+          <section>
+            <h2 class="mb-4 text-2xl font-bold text-black dark:text-white">Animated Series</h2>
+            
+            <div class="relative group">
+
+                <button id="coming-soon-prev" class="absolute left-0 top-1/2 z-10 hidden -translate-y-1/2 rounded-full bg-background-dark/80 p-3 text-white/80 opacity-0 shadow-lg backdrop-blur transition-opacity duration-300 hover:bg-background-dark md:block md:group-hover:opacity-100">
+                    <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+
+                <div id="coming-soon-carousel" class="flex snap-x snap-mandatory space-x-6 overflow-x-auto overflow-y-hidden p-0 no-scrollbar scroll-smooth">
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-gray-600/50 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Upcoming Epic" class="h-full w-full object-cover" src="https://m.media-amazon.com/images/M/MV5BY2E4ZGIwZWYtMGRiMS00NGI2LTgwYzAtZGY5NGVhNzY3Yjk0XkEyXkFqcGc@._V1_.jpg" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Blue Eye Samurai</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Action, Adventure</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-gray-600/50 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="The Last Hero" class="h-full w-full object-cover" src="https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p14264210_b_v13_ad.jpg" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Castlevania</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Action, Fantasy</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-gray-600/50 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Silent Witness" class="h-full w-full object-cover" src="https://upload.wikimedia.org/wikipedia/en/2/2f/Pantheon_%28TV_series%29.jpg" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Pantheon</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Scifi, Thriller, Mystery</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-gray-600/50 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Desert Sands" class="h-full w-full object-cover" src="https://static.wikia.nocookie.net/amazon-invincible/images/2/2e/Invincible_Amazon_Original_key_art.jpg/revision/latest?cb=20201129203110" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Invincible</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Action, sci-fi</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-gray-600/50 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Fantasy Voyage" class="h-full w-full object-cover" src="https://m.media-amazon.com/images/M/MV5BMjM0ZDcwMTQtZGQxNS00MjBiLTk5ZGUtZGNhOGU1YzdmMWYyXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Blood of Zeus</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Fantasy, Action</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-gray-600/50 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Digital World" class="h-full w-full object-cover" src="https://i.namu.wiki/i/cJYDN8S3HNrneqrGWyS9ATPhnYBT0dnx0QolkDqNQBMjzooX4ZFRS7NXL4PxZ9Q9DcDNz401xczRm4sZ4wkTjw.webp" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Arcane</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Sci-Fi, Thriller, Adventure</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-gray-600/50 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Placeholder 7" class="h-full w-full object-cover" src="https://mediaproxy.tvtropes.org/width/1200/https://static.tvtropes.org/pmwiki/pub/images/img_2398_0.jpeg" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Devil May Cry</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Fantasy, Action</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-gray-600/50 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Placeholder 8" class="h-full w-full object-cover" src="https://m.media-amazon.com/images/M/MV5BM2JkMzM2ZmYtNWU4MS00MjZhLWFhZWUtYWFjYTJkN2RhZDliXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Cyberpunk Edgerunners</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Action</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-gray-600/50 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Placeholder 9" class="h-full w-full object-cover" src="https://static.wikia.nocookie.net/insidejob/images/d/d9/Inside_Job_Season_1A_poster_office.jpg/revision/latest?cb=20211023011429" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Inside Job</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Drama, Mystery</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-gray-600/50 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Placeholder 10" class="h-full w-full object-cover" src="https://m.media-amazon.com/images/M/MV5BYjI0ZmVmMGItYjcxMi00ZmU0LWIxNjQtMmRjNjdjYjZjMWViXkEyXkFqcGc@._V1_.jpg" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Twilight of the gods</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Thriller, Action, Fantasy</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-gray-600/50 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Placeholder 11" class="h-full w-full object-cover" src="https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p186109_b_v8_aa.jpg" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Avatar The Last Airbender </h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Drama, Fantasy, Comedy</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-gray-600/50 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Placeholder 12" class="h-full w-full object-cover" src="https://resizing.flixster.com/i_HZrFPXGKM77XO0J4sYKZKnvO8=/ems.cHJkLWVtcy1hc3NldHMvdHZzZXJpZXMvMTBjYjlhODUtYTgwZS00ZTI0LTgwZDQtZGQ4OWFiM2IxZjliLmpwZw==" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">The Legend of Vox Machina</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Action, Drama</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="coming-soon-next" class="absolute right-0 top-1/2 z-10 hidden -translate-y-1/2 rounded-full bg-background-dark/80 p-3 text-white/80 opacity-0 shadow-lg backdrop-blur transition-opacity duration-300 hover:bg-background-dark md:block md:group-hover:opacity-100">
+                    <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+          </section>
+
+          <section>
+            <h2 class="mb-4 text-2xl font-bold text-black dark:text-white">Hollywood Classics</h2>
+            
+            <div class="relative group">
+
+                <button id="acclaimed-prev" class="absolute left-0 top-1/2 z-10 hidden -translate-y-1/2 rounded-full bg-background-dark/80 p-3 text-white/80 opacity-0 shadow-lg backdrop-blur transition-opacity duration-300 hover:bg-background-dark md:block md:group-hover:opacity-100">
+                    <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+
+                <div id="acclaimed-carousel" class="flex snap-x snap-mandatory space-x-6 overflow-x-auto overflow-y-hidden p-0 no-scrollbar scroll-smooth">
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-gray-600/50 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="The Director's Cut" class="h-full w-full object-cover" src="https://m.media-amazon.com/images/M/MV5BMjA1MTc1NTg5NV5BMl5BanBnXkFtZTgwOTM2MDEzNzE@._V1_.jpg" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">The Hateful Eight</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Drama, Historical</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-gray-600/50 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="City Lights" class="h-full w-full object-cover" src="https://m.media-amazon.com/images/M/MV5BMTkxYjU1OTMtYWViZC00ZjAzLWI3MDktZGQ2N2VmMjVjNDRlXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Heat</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Crime, Thriller</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-gray-600/50 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="The Maestro" class="h-full w-full object-cover" src="https://hpshplaidline.org/wp-content/uploads/2025/01/screenshot-2025-01-17-at-2.39.27e280afpm.png" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Seven</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Thriller, Mystery</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-gray-600/50 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Parallel Lives" class="h-full w-full object-cover" src="https://m.media-amazon.com/images/M/MV5BZDNhMGYwM2UtMTdlZS00MGQ1LWI2YzAtODY5YWI1MjYyNzRmXkEyXkFqcGc@._V1_.jpg" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Taxi Driver</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Drama, Neo-Noir</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-gray-600/50 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="The Lost City" class="h-full w-full object-cover" src="https://m.media-amazon.com/images/M/MV5BNDdjZGQ5YzEtNTc2My00Mjc0LWFlMTctYzkwMzZlNzdiZWYzXkEyXkFqcGc@._V1_.jpg" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Goodwill Hunting</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Romance, Spice of Life</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-gray-600/50 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Midnight Drive" class="h-full w-full object-cover" src="https://static.wikia.nocookie.net/international-entertainment-project/images/9/9b/The_Godfather_-_poster_%28English%29.jpg/revision/latest?cb=20231004233807" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">The Godfather</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Crime, Neo-Noir</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-gray-600/50 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Placeholder 7" class="h-full w-full object-cover" src="https://m.media-amazon.com/images/M/MV5BZmMyYzJlZmYtY2I3NC00NjAyLTkyZWItZjdjZDI1YTYyYTEwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Kill Bill</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Drama, Revenge</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-gray-600/50 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Placeholder 8" class="h-full w-full object-cover" src="https://play-lh.googleusercontent.com/lrDTJU_tTz9FefyFjcW571Tf4G_57ofuY9BSk_8KVfvt6RTRCrQMGtSNAmYrLHNzkezFNQ" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Shutter Island</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Mystery, Thriller</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-gray-600/50 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Placeholder 9" class="h-full w-full object-cover" src="https://m.media-amazon.com/images/M/MV5BMzUzNDM2NzM2MV5BMl5BanBnXkFtZTgwNTM3NTg4OTE@._V1_.jpg" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">La La Land</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Romance, Drama</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-gray-600/50 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Placeholder 10" class="h-full w-full object-cover" src="https://m.media-amazon.com/images/M/MV5BYzE2MzI2NTUtMmFlNS00ZTY5LTkxOTgtODVmZDc4ODhkMWM0XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">eternal sunshine of the spotless mind</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Drama, Romance, Heartbreak</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-gray-600/50 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Placeholder 11" class="h-full w-full object-cover" src="https://m.media-amazon.com/images/M/MV5BMDAyY2FhYjctNDc5OS00MDNlLThiMGUtY2UxYWVkNGY2ZjljXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Shawshank Redemtion</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Drama, Life</p>
+                        </div>
+                    </div>
+                    <div class="group w-52 flex-shrink-0 snap-start">
+                        <div class="aspect-[2/3] w-full overflow-hidden rounded-lg bg-gray-600/50 transition-transform duration-300 group-hover:scale-105">
+                            <img alt="Placeholder 12" class="h-full w-full object-cover" src="https://m.media-amazon.com/images/M/MV5BNjk0M2Y4ZTUtNzA3MS00MWYwLThmYjktMmYzNzVkYzQ3NmFlXkEyXkFqcGc@._V1_.jpg" />
+                        </div>
+                        <div class="mt-2">
+                            <h3 class="font-medium text-black dark:text-white">Coach Carter</h3>
+                            <p class="text-sm text-black/60 dark:text-white/60">Sport, Drama</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="acclaimed-next" class="absolute right-0 top-1/2 z-10 hidden -translate-y-1/2 rounded-full bg-background-dark/80 p-3 text-white/80 opacity-0 shadow-lg backdrop-blur transition-opacity duration-300 hover:bg-background-dark md:block md:group-hover:opacity-100">
+                    <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+          </section>
+        </div>
+      </main>
+      <footer class="border-t border-white/10 bg-background-light/50 dark:bg-background-dark/50">
+        <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+          <div class="flex flex-col items-center gap-6 text-center">
+            <div class="flex flex-wrap justify-center gap-x-6 gap-y-4">
+              <a class="text-sm text-black/60 transition-colors hover:text-primary dark:text-white/60 dark:hover:text-primary" href="#">About</a>
+              <a class="text-sm text-black/60 transition-colors hover:text-primary dark:text-white/60 dark:hover:text-primary" href="#">Contact</a>
+              <a class="text-sm text-black/60 transition-colors hover:text-primary dark:text-white/60 dark:hover:text-primary" href="#">FAQ</a>
+              <a class="text-sm text-black/60 transition-colors hover:text-primary dark:text-white/60 dark:hover:text-primary" href="#">Terms of Service</a>
+            </div>
+            <div class="flex justify-center gap-6">
+                <a class="text-black/60 transition-colors hover:text-primary dark:text-white/60 dark:hover:text-primary" href="https://x.com/DestinyisHIM">
+                <svg fill="currentColor" height="24" viewbox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M247.39,68.94A8,8,0,0,0,240,64H209.57A48.66,48.66,0,0,0,168.1,40a46.91,46.91,0,0,0-33.75,13.7A47.9,47.9,0,0,0,120,88v6.09C79.74,83.47,46.81,50.72,46.46,50.37a8,8,0,0,0-13.65,4.92c-4.31,47.79,9.57,79.77,22,98.18a110.93,110.93,0,0,0,21.88,24.2c-15.23,17.53-39.21,26.74-39.47,26.84a8,8,0,0,0-3.85,11.93c.75,1.12,3.75,5.05,11.08,8.72C53.51,229.7,65.48,232,80,232c70.67,0,129.72-54.42,135.75-124.44l29.91-29.9A8,8,0,0,0,247.39,68.94ZM202.39,98.35a8,8,0,0,0-2.32,5.14C196,166.58,143.28,216,80,216c-10.56,0-18-1.4-23.22-3.08,11.51-6.25,27.56-17,37.88-32.48A8,8,0,0,0,92,169.08c-.47-.27-43.91-26.34-44-96,16,13,45.25,33.17,78.67,38.79A8,8,0,0,0,136,104V88a32,32,0,0,1,9.6-22.92A30.94,30.94,0,0,1,167.9,56c12.66.16,24.49,7.88,29.44,19.21A8,8,0,0,0,204.67,80h16Z"></path>
+                </svg>
+              </a>
+              <a class="text-black/60 transition-colors hover:text-primary dark:text-white/60 dark:hover:text-primary" href="https://www.instagram.com/destinyishim">
+                <svg fill="currentColor" height="24" viewbox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"></path>
+                </svg>
+              </a>
+              <a class="text-black/60 transition-colors hover:text-primary dark:text-white/60 dark:hover:text-primary" href="https://youtube.com/@destinytalksfilms">
+                <svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M229.69,74.16a29.83,29.83,0,0,0-21-21.65C190.2,48,128,48,128,48s-62.2.0-80.64,4.51a29.83,29.83,0,0,0-21,21.65C24,92.54,24,128,24,128s0,35.46,4.36,53.84a29.83,29.83,0,0,0,21,21.65C65.8,208,128,208,128,208s62.2.0,80.64-4.51a29.83,29.83,0,0,0,21-21.65C232,163.46,232,128,232,128S232,92.54,229.69,74.16ZM104,171.75V84.25L170,128Z"></path>
+                </svg>
+              </a>
+              <a class="text-black/60 transition-colors hover:text-primary dark:text-white/60 dark:hover:text-primary" href="https://destinyishim.substack.com">
+                <svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M232,80H24V56H232ZM24,136H232V112H24Zm0,80H232V184H24Z"/>
+                </svg>
+              </a>
+            </div>
+            <p class="text-sm text-black/60 dark:text-white/60">© 2025 The OASIS Flims. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const heroImages = document.querySelectorAll(".carousel-image");
+        let heroIndex = 0;
+
+        function nextHeroImage() {
+          heroImages[heroIndex].classList.remove("active");
+          heroIndex = (heroIndex + 1) % heroImages.length;
+          heroImages[heroIndex].classList.add("active");
+        }
+        setInterval(nextHeroImage, 5000);
+      });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Setup for 'Trending Movies Now'
+            const trendingCarousel = document.getElementById('trending-carousel');
+            const trendingPrevButton = document.getElementById('trending-prev');
+            const trendingNextButton = document.getElementById('trending-next');
+
+            // Setup for 'Updated Series'
+            const seriesCarousel = document.getElementById('series-carousel');
+            const seriesPrevButton = document.getElementById('series-prev');
+            const seriesNextButton = document.getElementById('series-next');
+            
+            // Setup for 'Coming Soon' (NEW)
+            const comingSoonCarousel = document.getElementById('coming-soon-carousel');
+            const comingSoonPrevButton = document.getElementById('coming-soon-prev');
+            const comingSoonNextButton = document.getElementById('coming-soon-next');
+
+            // Setup for 'Critically Acclaimed' (NEW)
+            const acclaimedCarousel = document.getElementById('acclaimed-carousel');
+            const acclaimedPrevButton = document.getElementById('acclaimed-prev');
+            const acclaimedNextButton = document.getElementById('acclaimed-next');
+
+            // Scroll function that works for all carousels
+            function setupCarousel(carousel, prevButton, nextButton) {
+                if (carousel && prevButton && nextButton) {
+                    // Scroll distance is 80% of the visible container width
+                    const scrollDistance = carousel.clientWidth * 0.8; 
+
+                    // Scroll Left function
+                    prevButton.addEventListener('click', () => {
+                        carousel.scrollBy({
+                            left: -scrollDistance,
+                            behavior: 'smooth'
+                        });
+                    });
+
+                    // Scroll Right function
+                    nextButton.addEventListener('click', () => {
+                        carousel.scrollBy({
+                            left: scrollDistance,
+                            behavior: 'smooth'
+                        });
+                    });
+                }
+            }
+
+            // Initialize all carousels
+            setupCarousel(trendingCarousel, trendingPrevButton, trendingNextButton);
+            setupCarousel(seriesCarousel, seriesPrevButton, seriesNextButton);
+            setupCarousel(comingSoonCarousel, comingSoonPrevButton, comingSoonNextButton); // Initialize new carousel
+            setupCarousel(acclaimedCarousel, acclaimedPrevButton, acclaimedNextButton); // Initialize new carousel
+        });
+    </script>
+  </body>
+</html>
